@@ -1,9 +1,18 @@
 const express = require('express');
+const dotenv = require('dotenv');
+const { MongoClient } = require('mongodb');
+
+dotenv.config();  // Load the environment variables
+
+MongoClient.connect(process.env.MONGODB_URL)
+  .then(() => {
+    console.log('DB Connected Successfully');
+  })
+  .catch((error) => {
+    console.log('Error', error);
+  });
+
 const app = express();
-const PORT = 3000;
-
-app.use(express.static('FrontEnd'));
-
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(3000, () => {
+  console.log('Server started');
 });
