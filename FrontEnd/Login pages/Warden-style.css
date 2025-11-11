@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+main {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header img {
+    display: block;
+    margin: 0 auto 10px;
+}
+
+header h1 {
+    color: #8b0000;
+}
+
+main h1 {
+    margin-bottom: 8px;
+    color: #111;
+}
+
+main p {
+    color: #555;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #8b0000;
+}
+
+button {
+    background-color: #8b0000;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: #a01b1b;
+}
+
+
+.spanelement {
+    text-decoration: underline;
+    color: #8b0000;
+}
+
+/* For small screens*/
+@media (max-width: 600px) {
+    main {
+        width: 90%;
+        padding: 25px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    main h1 {
+        font-size: 18px;
+    }
+
+    input,
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* For medium screens */
+@media (min-width: 601px) and (max-width: 1024px) {
+    main {
+        width: 70%;
+        padding: 35px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    input,
+    button {
+        font-size: 15px;
+    }
+}
+
+/* For large screens */
+@media (min-width: 1025px) {
+    main {
+        width: 400px;
+        padding: 40px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    input,
+    button {
+        font-size: 16px;
+    }
+}
