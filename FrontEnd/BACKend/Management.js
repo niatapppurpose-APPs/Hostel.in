@@ -11,12 +11,33 @@ function ManagementLogin(){
         return user.email === email && user.password === password;
     });
 
-    if(isValidUser){
-        alert("Login Successful");
-        window.location.href = "#";
-    } else {
-        alert("Invalid email or password. Please try again.");
-    }
+    
+
+ if (isValidUser) {
+  showToast("Login successful! Redirecting to dashboard...", "success");
+  setTimeout(() => {
+    window.location.href = "dashboard.html";
+  }, 1500);
+} else {
+  showToast("Invalid email or password. Please try again.", "error");
+}
+
+}
+
+ function showToast(message, type = "success") {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  
+  // Reset any old classes
+  toast.className = "";  
+
+  // Add new type + show
+  toast.classList.add("show", type);
+
+  // Remove after 3s
+  setTimeout(() => {
+    toast.classList.remove("show", type);
+  }, 3000);
 }
 
 document.querySelector("form").addEventListener("submit", function(event){
