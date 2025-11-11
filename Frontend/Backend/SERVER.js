@@ -1,19 +1,14 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const mongoose = require('mongoose');
-const { MongoClient } = require('mongodb');
+const express = require("express");
+const dotenv = require("dotenv");
+const connectDB = require("./config/db");
+const studentRoutes = require("./routes/studentRoutes");
 
-dotenv.config();  // Load the environment variables
-
-MongoClient.connect(process.env.MONGODB_URL)
-  .then(() => {
-    console.log('DB Connected Successfully');
-  })
-  .catch((error) => {
-    console.log('Error', error);
-  });
+dotenv.config();
+connectDB();
 
 const app = express();
-app.listen(3000, () => {
-  console.log('Server started');
-});
+app.use(express.json());
+
+app.use("/api/students", studentRoutes);
+
+app.listen(3000, () => console.log("🚀 Server running on port 3000"));
