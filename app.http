@@ -1,0 +1,18 @@
+POST http://localhost:3000/StudentRegister
+Content-Type: application/json
+
+{
+  "name": "Hemanth",
+  "email": "hemanth@example.com",
+  "password": "12345",
+  "roomNumber": 105
+}
+
+###
+POST http://localhost:3000/StudentLogin
+Content-Type: application/json
+
+{
+  "identifier": "hemanth@example.com",
+  "password": "12345"
+}
