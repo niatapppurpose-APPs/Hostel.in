@@ -5,6 +5,7 @@ const studentSchema = new mongoose.Schema({
   email: { type: String, unique: true },
   roomNumber: Number,
   password: String,
+  rollNumber: { type: String, unique: true, sparse: true } // added
 });
 
 module.exports = mongoose.model("Student", studentSchema);

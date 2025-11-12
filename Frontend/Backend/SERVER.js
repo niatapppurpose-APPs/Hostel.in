@@ -14,30 +14,7 @@ app.use(express.json());
 
 // ✅ Enable CORS for your specific frontend domain
 app.use(cors());
-// app.use(cors({
-//   origin: "https://congenial-zebra-r459jvrq9744hx595-3000.app.github.dev",
-//   methods: ["GET", "POST"],
-//   allowedHeaders: ["Content-Type"]
-// }));
 
-// // Explicitly handle OPTIONS preflight for all routes so Express/CORS responds
-// // Use '/*' to match all paths for Express path-to-regexp compatibility
-// // Fallback OPTIONS handler: respond to preflight early with necessary headers.
-// // We set the same allowed origin/methods/headers here to ensure a preflight
-// // receives an Access-Control-Allow-Origin header even if another layer
-// // (like a proxy) forwards the request differently.
-// app.use((req, res, next) => {
-//   if (req.method === "OPTIONS") {
-//     res.header("Access-Control-Allow-Origin", "https://congenial-zebra-r459jvrq9744hx595-3000.app.github.dev");
-//     res.header("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
-//     res.header("Access-Control-Allow-Headers", "Content-Type");
-//     return res.sendStatus(204);
-//   }
-//   next();
-// });
-
-
-// ✅ MongoDB connection
 if (process.env.MONGODB_URL) {
   mongoose
     .connect(process.env.MONGODB_URL)

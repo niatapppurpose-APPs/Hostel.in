@@ -48,22 +48,12 @@
         identifier: document.getElementById("identifier").value,
         password: document.getElementById("password").value,
       };
-      // Build a correct backend URL — the API route is exposed as /StudentLogin on the
-      // backend, not under the static file path. If this page is served from a
-      // preview host (app.github.dev) or opened via file://, use the BACKEND
-      // forwarded URL instead.
-      const BACKEND = "http://localhost:3000"; // replace with your forwarded public URL when needed
-      // Use the page origin when possible (this covers the backend origin *and*
-      // Codespaces forwarded host like `*.app.github.dev`). Only fall back to
-      // BACKEND when the page is opened locally via file:// (browser cannot
-      // reach the container's localhost).
-      const base = (location.protocol === "file:") ? BACKEND : location.origin;
-      const url = `${base}/StudentLogin`;
+     
 
       let res;
       try {
-        res = await fetch(url, {
-          method: "POST",
+        res = await fetch('http://localhost:3000/StudentLogin', {
+          method: "POST", 
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(loginData),
         });
@@ -88,15 +78,17 @@
       }
 
       if (res.ok) {
-        alert("✅ Login successful!");
+        showToast("✅ Login successful!");
         setTimeout(() => {
           window.location.href = "dashboard.html";
         }, 1000);
       } else {
-        alert("❌ " + (data.message || `Request failed (${res.status})`));
+        showToast("❌ " + (data.message || `Request failed (${res.status})`));
       }
     });
+    
   </script>
+  <script src="../ToastMessage.html"  ></script>
 </body>
 
 </html>
