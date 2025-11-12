@@ -4,43 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beautiful Toast</title>
-    <!-- <link rel="stylesheet" href="student-style.css"> Link to your existing CSS -->
 </head>
 <style>
+    body {
+        font-family: "Poppins", sans-serif;
+        background: #f5f7fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    button {
+        background: #2575fc;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        background: #1b5ed8;
+    }
+
     #toast {
-    visibility: hidden;
-    min-width: 250px;
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    color: #fff;
-    text-align: center;
-    border-radius: 12px;
-    padding: 16px;
-    position: fixed;
-    z-index: 1;
-    bottom: 30px;
-    right: 30px;
-    font-size: 16px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s, transform 0.5s;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  }
+        visibility: hidden;
+        min-width: 250px;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: #fff;
+        text-align: center;
+        border-radius: 12px;
+        padding: 16px;
+        position: fixed;
+        z-index: 9999;
+        bottom: 30px;
+        right: 30px;
+        font-size: 16px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s, transform 0.5s;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
 
-  #toast.show {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-  }
-
+    #toast.show {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
 <body>
 
-<button onclick="showToast()">Show Toast</button>
+<button id="toastBtn">Show Toast</button>
 
 <div id="toast">✨ This is a beautiful toast message!</div>
 
-<script src = './Toast.js'>
+<script type="module">
+    import { showToast } from './Toast.js';
 
+    document.getElementById("toastBtn").addEventListener("click", () => {
+        showToast("✨ This is a beautiful toast message!");
+    });
 </script>
 
 </body>

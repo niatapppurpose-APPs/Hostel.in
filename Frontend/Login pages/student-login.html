@@ -39,56 +39,9 @@
   <footer>
     <p>@Niat Hostel 2025 | Contact: hostel@niat.edu</p>
   </footer>
+    <div id="toast"></div>
 
-  <script>
-    document.getElementById("loginForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const loginData = {
-        identifier: document.getElementById("identifier").value,
-        password: document.getElementById("password").value,
-      };
-     
-
-      let res;
-      try {
-        res = await fetch('http://localhost:3000/StudentLogin', {
-          method: "POST", 
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(loginData),
-        });
-      } catch (networkErr) {
-        console.error("Network error when calling", url, networkErr);
-        alert(`❌ Unable to reach server at ${url}. Is the backend running and publicly forwarded?`);
-        return;
-      }
-
-      let data = {};
-      const contentType = res.headers.get("content-type") || "";
-      if (contentType.includes("application/json")) {
-        try {
-          data = await res.json();
-        } catch (err) {
-          // Malformed or empty JSON — fall back to status text
-          data = { message: res.statusText || "No response body" };
-        }
-      } else {
-        // Non-JSON response (or empty) — provide a friendly message
-        data = { message: res.statusText || "No response body" };
-      }
-
-      if (res.ok) {
-        showToast("✅ Login successful!");
-        setTimeout(() => {
-          window.location.href = "dashboard.html";
-        }, 1000);
-      } else {
-        showToast("❌ " + (data.message || `Request failed (${res.status})`));
-      }
-    });
-    
-  </script>
-  <script src="../ToastMessage.html"  ></script>
+  <script type="module" src="./student-login.js"></script>
 </body>
 
 </html>
